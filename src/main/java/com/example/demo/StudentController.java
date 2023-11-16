@@ -12,10 +12,14 @@ import java.util.List;
 @RestController
 @RequestMapping("api")
 public class StudentController {
-
+    // 準備當作return的回傳物件
     private List<Student> studentList;
+
+    //由application.properties注入csv file path
     @Value("${file.path:#{null}}")
     private String filePath;
+
+    // 在controller 初始化後先執行的方法
     @PostConstruct
     public void initList(){
         if(filePath != null){
